@@ -1,0 +1,10 @@
+P001,Laptop Dell XPS 13,1500.0,10
+P002,MacBook Pro 16,2500.0,5
+P003,Máy tính ?? bàn HP,800.0,15
+P004,Màn hình ASUS 24 inch,300.0,20
+P005,Bàn phím c? Logitech,100.0,30
+P006,Chu?t gaming Razer,70.0,25
+P007,Máy in Canon,200.0,8
+P008,? c?ng SSD Samsung 1TB,150.0,12
+P009,RAM Corsair 16GB,75.0,18
+P010,B? ngu?n Cooler Master,100.0,0
