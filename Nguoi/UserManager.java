@@ -6,6 +6,8 @@ import java.util.List;
 //import java.util.Scanner;
 
 public class UserManager {
+    
+
     private List<User> userList = new ArrayList<>(); // Danh sách người dùng
     private List<Manager> managerList = new ArrayList<>(); // Danh sách quản lý
    // private List<Product> productList = new ArrayList<>(); // Danh sách sản phẩm
@@ -17,16 +19,17 @@ public class UserManager {
         loadManagersFromFile("managers.txt"); // Tải quản lý từ file
     }
 
+
     // Đăng ký người dùng mới
-    public void registerUser(String id, String name, String address, String phoneNumber, String username, String password) {
+     public User registerUser(String id, String name, String address, String phoneNumber, String username, String password) {
         User user = new User(id, name, address, phoneNumber, username, password); // Tạo đối tượng User mới
         userList.add(user); // Thêm người dùng vào danh sách
         saveUsersToFile("users.txt"); // Lưu danh sách người dùng vào file
         writeUserDetailsToFile(user); // Ghi thông tin người dùng vào file
         System.out.println("Đăng ký thành công."); // Thông báo đăng ký thành công
+        return user; // Trả về đối tượng User mới
     }
-
-    // Ghi thông tin người dùng vào file
+   
     private void writeUserDetailsToFile(User user) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("user_registration.txt", true))) {
             writer.write("ID của user: " + user.getId() + ", tên: " + user.getName() + ", địa chỉ: " + user.getAddress() +
@@ -151,6 +154,6 @@ public class UserManager {
         }
     }
 
-    // Phương thức tiện ích để nhập số nguyên
+
   
-}
+   }

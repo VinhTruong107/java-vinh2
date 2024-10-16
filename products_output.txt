@@ -7,4 +7,4 @@ P006,Chu?t gaming Razer,70.0,25
 P007,Máy in Canon,200.0,8
 P008,? c?ng SSD Samsung 1TB,150.0,12
 P009,RAM Corsair 16GB,75.0,18
-P010,B? ngu?n Cooler Master,100.0,0
+P010,B? ngu?n Cooler Master,100.0,15

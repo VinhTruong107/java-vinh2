@@ -2,6 +2,7 @@ package Nguoi; // Định nghĩa package là Nguoi
 
 import java.util.ArrayList; // Nhập khẩu ArrayList để sử dụng cho lịch sử mua hàng
 import java.util.List; // Nhập khẩu List để định nghĩa danh sách lịch sử mua hàng
+import java.util.Scanner;
 
 // Lớp User kế thừa từ lớp Nguoi và implements Purchasable
 public class User extends Nguoi implements Purchasable {
@@ -59,7 +60,9 @@ public class User extends Nguoi implements Purchasable {
             }
         }
     }
-
+    public List<String> getPurchaseHistory() {
+        return purchaseHistory; // Trả về danh sách lịch sử mua hàng
+    }
     // Phương thức hiển thị thông tin người dùng
     @Override
     public void displayInfo() {
@@ -77,4 +80,44 @@ public class User extends Nguoi implements Purchasable {
     public void performAction() {
         System.out.println(username + " is performing an action."); // Thông báo hành động của người dùng
     }
+
+    public void userBuyProduct(Scanner scanner, List<Product> productList) {
+        System.out.println("Chức năng mua hàng:");
+        
+        // Hiển thị danh sách sản phẩm trước khi nhập ID
+        viewProducts(productList);
+
+        System.out.print("Nhập ID sản phẩm cần mua: ");
+        String productId = scanner.nextLine();
+        System.out.print("Nhập số lượng cần mua: ");
+        int quantity = scanner.nextInt();
+        scanner.nextLine(); // Tiêu thụ ký tự xuống dòng
+
+        for (Product product : productList) {
+            if (product.getProductId().equals(productId) && product.getQuantity() >= quantity) {
+                product.setQuantity(product.getQuantity() - quantity);
+                addPurchase("Mua sản phẩm: " + product.getProductName() + " - Số lượng: " + quantity);
+                System.out.println("Mua hàng thành công!");
+                return;
+            }
+        }
+        System.out.println("Sản phẩm không đủ số lượng hoặc không tồn tại.");
+    }
+
+    // Phương thức để hiển thị danh sách sản phẩm
+    private void viewProducts(List<Product> productList) {
+        if (productList.isEmpty()) {
+            System.out.println("Danh sách sản phẩm rỗng.");
+            return;
+        }
+
+        System.out.println("Danh sách sản phẩm:");
+        for (Product product : productList) {
+            System.out.println("ID: " + product.getProductId() +
+                               " - Tên: " + product.getProductName() +
+                               " - Giá: " + product.getPrice() +
+                               " - Số lượng: " + product.getQuantity());
+        }
+    }
 }
+
